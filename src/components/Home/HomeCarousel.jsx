@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Carousel, Modal } from 'antd';
 import { getBannerMovie, getModalVideo } from '../../redux/reducers/BannerReducer'; 
-import { layThongTinBanner } from '../../services/CinemaService';
+import { layThongTinBanner } from '../../services/CinemaClusterService';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeCarousel() {

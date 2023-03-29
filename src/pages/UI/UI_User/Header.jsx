@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Drawer, Space, Tooltip } from 'antd';
-import { getLocalStorage, removeLocalStorage, SwalConfig } from '../../utils/config'
+import { getLocalStorage, removeLocalStorage, SwalConfig } from '../../../utils/config'
 import { useDispatch, useSelector } from 'react-redux'
-import { setStatusLogin } from '../../redux/reducers/UserReducer'
-import { LOCALSTORAGE_USER } from '../../utils/constant'
+import { setStatusLogin } from '../../../redux/reducers/UserReducer'
+import { LOCALSTORAGE_USER } from '../../../utils/constant'
 
 
 export default () => {

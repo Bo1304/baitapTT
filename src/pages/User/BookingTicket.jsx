@@ -9,7 +9,7 @@ import useRoute from '../../hooks/useRoute'
 import { LOCALSTORAGE_USER } from '../../utils/constant'
 import { getLocalStorage, SwalConfig } from '../../utils/config'
 import LoadingPage from '../LoadingPage'
-import { LayDanhSachPhongVeService, DatVe } from '../../services/BookingManager'
+import { LayDanhSachPhongVeService, DatVe } from '../../services/BookingService'
 import { datGhe, layDanhSachPhongVe, xoaDanhSachGheDangDat } from '../../redux/reducers/BookingReducer'
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe'
 import { callApiThongTinNguoiDung, setUserInfor } from '../../redux/reducers/UserReducer'
@@ -141,28 +141,45 @@ const BookingTicket = (thongTinNguoiDung, id, setIsLoading) => {
                     </div>
                 </div>
                 <div className="col-span-12 xl:col-span-2 2xl:col-span-3">
-                    <h3 className='text-orange-500 text-center text-2xl'>
+                    <h3 className='text-green-600 text-center text-2xl'>
                         {danhSachGheDangDat.reduce((tong, ghe) => {
                             return tong += ghe.giaVe
                         }, 0).toLocaleString()} VND
                     </h3>
                     <hr />
                     <div className='my-5'>
-                        <h3 className='text-lg mb-2 tracking-wide font-semibold'>{thongTinPhim.tenPhim}</h3>
-                        <p className='mb-2'>{thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}</p>
-                        <p className='mb-2'>Địa điểm: {thongTinPhim.diaChi}</p>
-                        <p>Ngày chiếu: {thongTinPhim.ngayChieu} </p>
+                    
+                        <h3 className='mt-5 text-black font-semibold text-xl'>Tên phim:  
+                        <span className='ml-24 text-green-500 text-sm'>{thongTinPhim.tenPhim}</span>
+                        </h3>
+                        <span className='text-black font-semibold text-xl'>Cụm rạp:  
+                        <span className='ml-24 text-green-500 text-sm'>{thongTinPhim.tenCumRap}</span>
+                        </span>
+                        <hr className='mt-3'/>
+                        <h3 className='mt-5 text-black font-semibold text-xl'>Đia chỉ:  
+                        <span className='ml-16 text-green-500 text-sm'>{thongTinPhim.diaChi}</span>
+                        </h3>
+                        <hr className='mt-3'/>
+                        <h3 className='mt-5 text-black font-semibold text-xl'>Rạp:  
+                        <span className='ml-24 text-green-500 text-sm'>{thongTinPhim.tenRap}</span>
+                        </h3>
+                        <hr className='mt-3'/>
+                        <h3 className='mt-5 text-black font-semibold text-xl'>Ngày chiếu:  
+                        <span className='ml-24 text-green-500 text-sm'>{thongTinPhim.ngayChieu}</span>
+                        </h3>
+                        
+                     
                     </div>
                     <hr />
                     <div className="flex flex-row my-5 items-center">
                         <div className='flex flex-wrap items-center '>
-                            <span className='text-black font-semibold text-lg'>Ghế: </span>
+                            <span className='text-black font-semibold text-lg'>Chọn: </span>
                             {_.sortBy(danhSachGheDangDat, ['stt'])?.map((itemGheDangChon, indexGheDangChon) =>
                                 <span key={indexGheDangChon} className='mb-2 text-orange-600 font-semibold text-lg mx-1 border-2 px-2 border-orange-100'>{itemGheDangChon.stt}</span>)}
                         </div>
                     </div>
                     <hr />
-                    <div className='my-5'>
+                    {/* <div className='my-5'>
                         <h2>Email</h2>
                         {thongTinNguoiDung.email}
                     </div>
@@ -170,7 +187,7 @@ const BookingTicket = (thongTinNguoiDung, id, setIsLoading) => {
                     <div className='my-5'>
                         <h2>Phone</h2>
                         {thongTinNguoiDung.soDT}
-                    </div>
+                    </div> */}
                     <hr />
                     <div className='mb-0 cursor-pointer'>
                         <div onClick={() => {
@@ -180,7 +197,7 @@ const BookingTicket = (thongTinNguoiDung, id, setIsLoading) => {
                             else {
                                 callApiDatVe()
                             }
-                        }} className='bg-orange-400 hover:bg-orange-600 text-white w-full text-center py-3 font-bold text-xl'>
+                        }} className='bg-red-500 hover:bg-orange-600 text-white w-full text-center py-3 font-bold text-xl'>
                             ĐẶT VÉ
                         </div>
                     </div>

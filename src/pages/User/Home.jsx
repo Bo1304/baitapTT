@@ -7,7 +7,7 @@ import LoadingPage from '../LoadingPage'
 import { callApiFilm, getFilmList } from '../../redux/reducers/FilmReducer'
 import { LayHeThongRapChieu } from '../../redux/reducers/CinemaReducer'
 import { history } from '../../utils/history'
-import { LayThongTinLichChieuHeThongRap } from '../../services/CinemaService'
+import { LayThongTinLichChieuHeThongRap } from '../../services/CinemaClusterService'
 import MovieNews from '../../components/Home/MovieNews'
 import ApplicationUser from '../../components/Home/ApplicationUser'
 

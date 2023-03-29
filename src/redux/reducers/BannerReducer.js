@@ -5,21 +5,7 @@ import pussInBoots from '../../assets/img/pussInBoots.jpg'
 
 const initialState = {
     data: [
-        {
-            maBanner: 1,
-            link: 'https://www.youtube.com/watch?v=rcpuVDA9JPY',
-            img: avatar
-        },
-        {
-            maBanner: 2,
-            link: 'https://www.youtube.com/watch?v=7Ma1uab-bQM&t=4s',
-            img: onepiece
-        },
-        {
-            maBanner: 3,
-            link: 'https://www.youtube.com/watch?v=fovTZDDPgAQ',
-            img: pussInBoots
-        },
+    
     ],
     modalData: ''
 }

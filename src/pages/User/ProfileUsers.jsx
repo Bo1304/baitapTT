@@ -1,40 +1,135 @@
 import React from 'react'
+
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { callApiThongTinNguoiDung } from '../../redux/reducers/UserReducer'
 import NotFound from '../NotFound'
-import { Tabs } from 'antd'
+import { Tabs ,Button, Form, Input, InputNumber} from 'antd'
 import moment from 'moment'
 import _ from "lodash";
+import { getLocalStorage, removeLocalStorage, SwalConfig } from '../../utils/config'
+// import '../Style/ProfileUser.css'
+import { LOCALSTORAGE_USER } from '../../utils/constant'
+const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  
+  /* eslint-disable no-template-curly-in-string */
+  const validateMessages = {
+    required: '${label} is required!',
+    types: {
+      email: '${label} is not a valid email!',
+      number: '${label} is not a valid number!',
+    },
+    number: {
+      range: '${label} must be between ${min} and ${max}',
+    },
+  };
+  /* eslint-enable no-template-curly-in-string */
+  
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
 
 const ThongTinNguoiDung = (thongTinNguoiDung) => {
     return <div className='h-[100vh] relative'>
-        <section className="p-6 bg-gray-500 w-full md:w-[80%] lg:w-[60%] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-lg">
-            <h2 className='text-white font-bold text-2xl mb-4'>Thông tin tài khoản</h2>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                <div>
-                    <p className='font-semibold text-[17px] mb-1'>Tài khoản</p>
-                    <input readOnly type="text" value={thongTinNguoiDung?.taiKhoan} className='p-2 border-none w-full rounded-sm text-[16px]' />
+   
+     
+ 
+            <div className="row" 
+            style={{
+                marginLeft:'435px'
+            }}
+            >
+                <div className="col-md-3 border-right">
+                    <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img className="rounded-circle mt-5" width="150px" src={`https://i.pravatar.cc/150?u=${getLocalStorage(LOCALSTORAGE_USER).taiKhoan} `} />
+                      
+                        <span> </span>
+                    </div>
                 </div>
-                <div>
-                    <p className='font-semibold text-[17px] mb-1'>Email</p>
-                    <input readOnly type="text" value={thongTinNguoiDung?.email} className='p-2 border-none w-full rounded-sm text-[16px]' />
-                </div>
-                <div>
-                    <p className='font-semibold text-[17px] mb-1'>Số điện thoại</p>
-                    <input readOnly type="text" value={thongTinNguoiDung?.soDT} className='p-2 border-none w-full rounded-sm text-[16px]' />
-                </div>
-                <div>
-                    <p className='font-semibold text-[17px] mb-1'>Họ tên</p>
-                    <input readOnly type="text" value={thongTinNguoiDung?.hoTen} className='p-2 border-none w-full rounded-sm text-[16px]' />
-                </div>
-                <div>
-                    <p className='font-semibold text-[17px] mb-1'>Loại tài khoản</p>
-                    <input readOnly type="text" value={thongTinNguoiDung?.maLoaiNguoiDung} className='p-2 border-none w-full rounded-sm text-[16px]' />
-                </div>
+                <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinish}
+                    style={{
+                        maxWidth: 600,
+                    }}
+                    validateMessages={validateMessages}
+                >
+                    <Form.Item
+                        name={['user', 'name']}
+                        label="Tài Khoản"
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                       <Input defaultValue={thongTinNguoiDung?.taiKhoan} />
+                    </Form.Item>
+
+                    <Form.Item
+                        name={['user', 'email']}
+                        label="Email"
+                        rules={[
+                            {
+                                type: 'email',
+                            },
+                        ]}
+                    >
+                        <Input  defaultValue={thongTinNguoiDung?.email}/>
+                    </Form.Item>
+                    <Form.Item
+                  
+                        name={['sdt', 'phone']}
+                        label="Số điện thoại"
+                        rules={[
+                            {
+                                required: true,
+                                
+                            },
+                        ]}
+                    >
+                        <InputNumber  className='w-40'  defaultValue={thongTinNguoiDung?.soDT}/>
+                    </Form.Item>
+
+                    <Form.Item
+                      
+                        name={['user', 'name']}
+                        label="Họ tên Người dùng"
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                       <Input defaultValue={thongTinNguoiDung?.hoTen} />
+                    </Form.Item>
+
+                    <Form.Item
+                        name={['user', 'name']}
+                        label="Loại tài khoản người dùng"
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                       <Input  className='w-60' defaultValue={thongTinNguoiDung?.maLoaiNguoiDung} />
+                    </Form.Item>
+                </Form>
+
+
             </div>
-        </section>
-    </div>
+        </div>
+  
 }
 
 const KetQuaDatVe = (thongTinNguoiDung) => {
@@ -83,7 +178,7 @@ export default () => {
         { label: <span className='text-[11px] sm:text-[14px]'>01. THÔNG TIN NGƯỜI DÙNG</span>, key: 1, children: ThongTinNguoiDung(thongTinNguoiDung) },
         { label: <span className='text-[11px] sm:text-[14px]'>02. LỊCH SỬ ĐẶT VÉ</span>, key: 2, children: KetQuaDatVe(thongTinNguoiDung) },
     ];
-    
+
     return (
         <>
             {isLogin ? <Tabs className='pt-[6rem] min-h-[100vh] booking' items={items} /> : <NotFound />}

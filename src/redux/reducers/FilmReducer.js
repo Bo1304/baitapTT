@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { LayThongTinLichChieu } from '../../services/CinemaService';
+import { LayThongTinLichChieu } from '../../services/CinemaClusterService';
 import { capNhatPhimUpload, LayDanhSachPhim, LayThongTinPhimChiTiet, themPhimUpload, xoaPhim } from '../../services/FilmService';
 import { SwalConfig } from '../../utils/config';
 import {history} from '../../utils/history'

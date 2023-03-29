@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './Footerz.css';
 import _ from 'lodash';
 import { NavLink, useNavigate } from "react-router-dom";
-import { LayThongTinLichChieuHeThongRap } from "../../services/CinemaService";
+import { LayThongTinLichChieuHeThongRap } from "../../../services/CinemaClusterService";
 import { useSelector } from 'react-redux';
 
 

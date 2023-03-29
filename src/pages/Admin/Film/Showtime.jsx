@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { DatePicker, InputNumber, Select, Button, Form, Input } from 'antd';
-import { layThongTinCumRapTheoHeThong, layThongTinHeThongRap } from '../../../services/CinemaService';
+import { layThongTinCumRapTheoHeThong, layThongTinHeThongRap } from '../../../services/CinemaClusterService';
 import { useFormik } from 'formik';
 import useRoute from '../../../hooks/useRoute'
 import moment from 'moment';
-import { TaoLichChieu } from '../../../services/BookingManager';
+import { TaoLichChieu } from '../../../services/BookingService';
 import { SwalConfig } from '../../../utils/config';
 
 export default function Showtime() {
